@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Hilo Game</title>
+		<meta charset="utf-8">
+	</head>
+	<body>
+		<form id = "hilo" method="post" action="return validate();">
+			<label for = "hilo" id = "input">Enter the guess: </label>
+			<input type = "text" id = "input" name = "input" required>
+			<button type = "submit"> Submit </button>
+			<p id = "message"></p>
+		</form>
+		
+		<script>
+			function validate(){
+				const guess = documents.form.input.value();
+				const msg = document.getElementById("message").value;
+				
+				fetch("hilo",{
+					method: "POST",
+					body: input
+				})
+				.then(response => response.text())
+				.then (result => {
+					if(result == "correct"){
+						msg.textContent = "Guess is correct";
+						return true;
+					}
+					if(result == "high"){
+						msg.textContent = "Guess should be higher";
+						return false;
+					}
+					if(result == "low"){
+						msg.textContent = "Guess should be lower";
+						return false;
+					}
+				})
+				.catch(error => {
+					messageElement.textContent = "Error";
+				});
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+        function check() {
+            var password = document.getElementById("pwd").value;
+            var reCheckPassword = document.getElementById("confirmPwd").value;
+            var submit = document.getElementById("submit");
+
+            if (password === reCheckPassword) {
+                submit.disabled = false;
+            } else {
+                submit.disabled = true;
+            }
+        }
+    </script>
+</head>
+<body>
+<form action="change" method="post">
+        <label for="password">Password:</label>
+        <input type="password" id="pwd" name="password" oninput="check()" required = "true"><br>
+
+        <label for="confirmPassword">Confirm Password:</label>
+        <input type="password" id="confirmPwd" oninput="check()" required = "true"><br>
+
+        <button type="submit" id="submit" disabled>Submit</button>
+    </form>
+</body>
+</html>
